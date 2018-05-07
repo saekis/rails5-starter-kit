@@ -3,6 +3,10 @@
 ## Description
 Simple Ruby on Rails Starter Kit
 
+## Todo
+- frontend build
+- worker
+
 ## Requirement
 - rbenv
 - ruby
