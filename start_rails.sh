@@ -1,14 +1,25 @@
 #!/bin/sh
 set -eu
 
-DATABASE=mysql
+down() {
+    echo
+    echo "clean up containers..."
 
-echo "\nCurrent ruby version: `rbenv version`\n"
-ruby -v
+    docker-compose down
 
-echo "\nInstalling rails...\n"
-gem install bundler
-bundle install --path vendor/bundle --jobs=4
+    echo "done."
+    echo
+}
 
-echo "\nRails new...\n"
-bundle exec rails new . -f -d $DATABASE --skip-turbolinks --skip-test
+trap down HUP TERM INT;
+
+if [ ! -d "./app" ]; then
+    docker-compose run --rm rails rails new . -f -d mysql --skip-turbolinks --skip-test
+    docker-compose run --rm rails bundle install
+    cp ./docker/rails/init/puma.rb ./config/puma.rb
+    cp ./docker/rails/init/database.yml ./config/database.yml
+    docker-compose run --rm rails rake db:create
+fi
+
+docker-compose run --rm rails bundle install
+docker-compose up
