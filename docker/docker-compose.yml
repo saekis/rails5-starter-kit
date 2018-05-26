@@ -45,11 +45,10 @@ services:
       context: ./
       dockerfile: ./docker/node/Dockerfile
     volumes:
-      - ./package.json:/app/package.json
-      - public-data:/app/public
-      - ./frontend:/app/frontend
-      - ./yarn.lock:/app/yarn.lock
-      - node_modules:/app/node_modules
+      - .:/web
+      - public-data:/web/public
+      - ./frontend:/web/frontend
+      - node_modules:/web/node_modules
 
   # worker:
   #   build:

@@ -15,6 +15,7 @@ trap down HUP TERM INT;
 
 if [ ! -d "./app" ]; then
     docker-compose run --rm rails rails new . -f -d mysql --skip-turbolinks --skip-test
+    cp -R ./docker/rails/init/.bundle ./.bundle
     docker-compose run --rm rails bundle install
     cp ./docker/rails/init/puma.rb ./config/puma.rb
     cp ./docker/rails/init/database.yml ./config/database.yml

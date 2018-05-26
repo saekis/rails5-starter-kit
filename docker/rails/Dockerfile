@@ -24,6 +24,7 @@ RUN set -x \
     --with-xml2-config=/usr/bin/xml2-config \
     --with-xslt-config=/usr/bin/xslt-config
 
+RUN gem install bundler
 ADD Gemfile $RAILS_ROOT/Gemfile
 ADD Gemfile.lock $RAILS_ROOT/Gemfile.lock
 
