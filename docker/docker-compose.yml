@@ -2,8 +2,8 @@ version: '3'
 services:
   nginx:
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+      context: ../
+      dockerfile: ./docker/nginx/Dockerfile
     container_name: nginx
     volumes:
       - public-data:/web/public
@@ -15,8 +15,8 @@ services:
 
   rails:
     build:
-      context: .
-      dockerfile: ./rails/Dockerfile
+      context: ../
+      dockerfile: ./docker/rails/Dockerfile
     container_name: rails
     command: bundle exec puma -C config/puma.rb
     volumes:
@@ -42,8 +42,8 @@ services:
 
   node:
     build:
-      context: ./
-      dockerfile: ./node/Dockerfile
+      context: ../
+      dockerfile: ./docker/node/Dockerfile
     volumes:
       - .:/web
       - public-data:/web/public
@@ -52,8 +52,8 @@ services:
 
   # worker:
   #   build:
-  #     context: .
-  #     dockerfile: ./rails/Dockerfile
+  #     context: ../
+  #     dockerfile: ./docker/rails/Dockerfile
   #   command: bundle exec sidekiq
   #   volumes_from:
   #     - rails
