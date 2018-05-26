@@ -15,7 +15,7 @@ down() {
 
 trap down HUP TERM INT;
 
-if [ ! -d "./app" ]; then
+if [ ! -d "../app" ]; then
     pwd
     cp -R ./rails/init/.bundle ../.bundle
     cp ./rails/init/Gemfile ../Gemfile
