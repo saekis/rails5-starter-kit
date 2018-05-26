@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+cd `dirname $0`
+
 down() {
     echo
     echo "clean up containers..."
@@ -14,6 +16,7 @@ down() {
 trap down HUP TERM INT;
 
 if [ ! -d "./app" ]; then
+    pwd
     cp -R ./rails/init/.bundle ../.bundle
     cp ./rails/init/Gemfile ../Gemfile
     cp ./rails/init/Gemfile.lock ../Gemfile.lock
