@@ -12,7 +12,7 @@ Simple Ruby on Rails Starter Kit
 
 ## Usage
 ```sh
-$ git clone https://github.com/saekis/rails5-starter-kit.git docker
+$ git submodule add https://github.com/saekis/rails5-starter-kit.git docker
 $ ./docker/start_rails.sh
 ```
 タッッッーン
