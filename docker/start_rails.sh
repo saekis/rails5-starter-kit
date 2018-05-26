@@ -14,7 +14,7 @@ down() {
 trap down HUP TERM INT;
 
 if [ ! -d "./app" ]; then
-    cp ./rails/init/.bundle ../.bundle
+    cp -R ./rails/init/.bundle ../.bundle
     cp ./rails/init/Gemfile ../Gemfile
     cp ./rails/init/Gemfile.lock ../Gemfile.lock
     docker-compose -f ./docker-compose.yml run --rm rails rails new . -f -d mysql --skip-turbolinks --skip-test
