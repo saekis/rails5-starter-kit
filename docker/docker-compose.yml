@@ -20,7 +20,7 @@ services:
     container_name: rails
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/web
+      - ..:/web
       - tmp-data:/web/tmp
       - bundle:/bundle
     environment:
@@ -45,7 +45,7 @@ services:
       context: ../
       dockerfile: ./docker/node/Dockerfile
     volumes:
-      - .:/web
+      - ..:/web
       - public-data:/web/public
       - ./frontend:/web/frontend
       - node_modules:/web/node_modules
