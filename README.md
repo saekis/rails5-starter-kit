@@ -8,13 +8,12 @@ Simple Ruby on Rails Starter Kit
 - worker
 
 ## Requirement
-- rbenv
 - ruby
 
 ## Usage
 ```sh
-$ rbenv local $RUBY_VERSION # If necessary
-$ ./start_rails.sh
+$ git clone https://github.com/saekis/rails5-starter-kit.git docker
+$ ./docker/start_rails.sh
 ```
 タッッッーン
 
