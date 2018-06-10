@@ -20,11 +20,11 @@ if [ ! -d "../app" ]; then
     cp -R ./rails/init/.bundle ../.bundle
     cp ./rails/init/Gemfile ../Gemfile
     cp ./rails/init/Gemfile.lock ../Gemfile.lock
-    docker-compose -f ./docker-compose.yml run --rm rails rails new . -f -d mysql --skip-turbolinks --skip-test
+    docker-compose -f ./docker-compose.yml run --rm rails bundle exec rails new . -f -d mysql --skip-turbolinks --skip-test
     docker-compose -f ./docker-compose.yml run --rm rails bundle install
     cp ./rails/init/puma.rb ../config/puma.rb
     cp ./rails/init/database.yml ../config/database.yml
-    docker-compose -f ./docker-compose.yml run --rm rails rake db:create
+    docker-compose -f ./docker-compose.yml run --rm rails bundle exec rake db:create
 fi
 
 docker-compose -f ./docker-compose.yml run --rm rails bundle install
